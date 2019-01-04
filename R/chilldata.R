@@ -10,7 +10,8 @@
 #'
 #' @format A data frame with 20 rows and 2 variables:
 #' \describe{
-#'   \item{Chill_portions}{annual chill portions achieved}
-#'   \item{Yield}{annul yield in tons}
+#'   \item{Chill_portions}{annual chill portions}
+#'   \item{Yield}{annual yield}
+#'   ...
 #' }
 "chilldata"
