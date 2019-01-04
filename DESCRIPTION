@@ -1,0 +1,15 @@
+Package: pasitR
+Type: Package
+Title: Calculates common functions for the PASIT project
+Version: 0.1.0
+Authors: Cory Whitney, Katja Schiffers
+Maintainer: Cory Whitney <cory.whitney@uni-bonn.de>
+Description: Calculates common functions for the PASIT project.
+Depends: R (>= 2.10)
+Imports:
+    ggplot2, 
+    psych
+License: GPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
