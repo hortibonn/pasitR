@@ -48,6 +48,8 @@ In `chillkernel()` the density (z) over the entire plot integrates to one, and t
 pasitR::chillkernelslice(chill, yield, expectedchill = 30)
 ```
 
+`chillkernelslice()` plots the probabilities (shown along the y-axis) for the expected yield (shown along the x-axis). Since this is a cut through the density kernel `chillkernel()`, which integrates to 1, the probability values are relative, not absolute measures.
+
 ##Chill portion intervals
 
 `chillviolin()` determines different possible chill portion intervals by calculating the optimal interval width for chill portions using the `IQR()` function in the `stats()` package, after the Freedman-Diaconis rule (IQR = interquartile range).
@@ -61,12 +63,13 @@ pasitR::chillviolin(chill, yield)
 
 ##Probability of yield given chil
 
-`chillkernelslicerange()` The chill portion intervals, optimized interquartile ranges shown in `chillviolin()` can be used as ranges to take a slice of the density kernel `chillkernel()`.
+`chillkernelslicerange()` The chill portion intervals, optimized interquartile ranges shown in `chillviolin()` can be used to select a range to slice from the density kernel `chillkernel()` as was doen for a single chill value in `chillkernelslice()`. Here we set the maximum chill to 20 and the minimum to 10.
 
 ```{r, fig.width = 5}
-pasitR::chillkernelslicerange(chill, yield)
+pasitR::chillkernelslicerange(chill, yield, 10, 20)
 ```
 
+`chillkernelslicerange()` plots the probabilities (shown along the y-axis) for the expected yield (shown along the x-axis). As with `chillkernelslice()` the probability values shown are relative, not absolute measures. They are the result of cuts through the density kernel `chillkernel()`, which integrates to 1. 
 
 ##References
 
