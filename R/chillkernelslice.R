@@ -47,6 +47,6 @@ chillkernelslice <- function(chill, yield, expectedchill) {
        ylab = "Relative probability", xlab = "Yield for chill values", 
        col="seagreen", lwd = 2)
   
-  print("Estimated yield given expected chill, based on a slice of 'z' from the Kernel density plot of chill and yield data.")
+  print("Estimated yield given expected chill.")
 }
 
