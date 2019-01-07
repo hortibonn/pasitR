@@ -36,5 +36,5 @@ chillscatter <- function(chill, yield) {
   psych::scatter.hist(x=chillyielddata$chill, y=chillyielddata$yield, density=TRUE, 
                       xlab="Chill", ylab="Yield")
   
-    print("Chill (x) and yield (y) scatter plot with associated and estimated densities  (using a loess smooth) given by the red dot (mean) and red ellipses (1 and 2 sigma from mean). The red line going across the plot shows the linear fit. Histograms are shown with smooth lines (loess smooth linear fits) density curves. The numeric value in the upper right gives the Spearman correlation coefficient between chill portions and yield.")
+    print("Chill (x) and yield (y) scatter plot with associated and estimated densities.")
 }

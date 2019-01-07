@@ -7,7 +7,6 @@
 #' @param chill is a list of observed annual chill portions corresponding to another list with annual yields. 
 #' @param yield is a list of observed annual yields corresponding to another list with annual chill portions. 
 #' 
-#' 
 #' @importFrom MASS kde2d
 #' @importFrom stats complete.cases
 #' @importFrom graphics filled.contour
@@ -44,6 +43,6 @@ chillkernel <- function(chill, yield) {
   
   graphics::filled.contour(chillyieldkernel, xlab = "Chill portion", ylab= "Yield")
   
-  print("Density surface plot of chill portions (x) and yield (y). The legend shows the value for the estimated density (z).")
+  print("Density surface plot of chill portions (x) and yield (y).")
 }
 
