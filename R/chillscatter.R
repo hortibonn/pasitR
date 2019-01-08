@@ -24,6 +24,14 @@ chillscatter <- function(chill, yield) {
     stop("Package \"stats\" needed for this function to work. Please install it.",
          call. = FALSE)
   }
+ 
+  #add error stops   
+  assertthat::validate_that(length(chill) == length(yield), msg = "\"chill\" and \"yield\" are not equal lengths.")
+  assertthat::validate_that(is.numeric(chill), msg = "\"chill\" is not numeric.")
+  assertthat::validate_that(is.finite(chill), msg = "\"chill\" is not finite.")
+  
+  assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
+  assertthat::validate_that(is.finite(yield), msg = "\"yield\" is not finite.")
   
   chillyielddata <- chillyield <- ylab <- xlab <- NULL # Setting the variables to NULL first, appeasing R CMD check
   
@@ -32,8 +40,10 @@ chillscatter <- function(chill, yield) {
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
   
+  assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
+  
   ## build a scatter plot with a histogram of x and y with 'psych'
-  psych::scatter.hist(x=chillyielddata$chill, y=chillyielddata$yield, density=TRUE, 
+  scatter<-psych::scatter.hist(x=chillyielddata$chill, y=chillyielddata$yield, density=TRUE, 
                       xlab="Chill", ylab="Yield")
   
     print("Chill (x) and yield (y) scatter plot with associated and estimated densities.")
