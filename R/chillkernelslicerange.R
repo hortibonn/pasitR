@@ -48,7 +48,7 @@ chillkernelslicerange <- function(chill, yield, min_chill, max_chill) {
   lbound <- which(chillyieldkernel$x == min(chillyieldkernel$x[which(chillyieldkernel$x > min_chill)]))
   rbound <- which(chillyieldkernel$x == max(chillyieldkernel$x[which(chillyieldkernel$x <= max_chill)]))
   
-  graphics::plot(chillyieldkernel$y, rowMeans(chillyieldkernel$z[,lbound:rbound]), type="l", col="seagreen", lwd = 2,
+ graphics::plot(chillyieldkernel$y, rowMeans(chillyieldkernel$z[,lbound:rbound]), type="l", col="seagreen", lwd = 2,
        xlab = paste("Yield for chill values between", as.character(min_chill), "and", 
                     as.character(max_chill)), ylab = "Relative probability")
   
