@@ -17,6 +17,8 @@
 #' @importFrom ggplot2 ylab
 #' @importFrom stats complete.cases
 #' @importFrom stats IQR
+#' @importFrom assertthat validate_that
+#' @importFrom assertthat see_if
 #' 
 #' @keywords chill yield Freedman-Diaconis IQR violin
 #'
@@ -49,6 +51,8 @@ chillviolin <- function(chill, yield) {
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
+  #message about complete cases
+  assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
   ## a method to calculate the optimal bin width for the violin plots 
   ## after the Freedman-Diaconis rule (IQR = interquartile range, buildt-in):

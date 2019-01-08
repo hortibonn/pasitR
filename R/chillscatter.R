@@ -6,6 +6,8 @@
 #' 
 #' @importFrom psych scatter.hist
 #' @importFrom stats complete.cases
+#' @importFrom assertthat validate_that
+#' @importFrom assertthat see_if
 #' 
 #' @keywords chill, chill portions, yield
 #'
@@ -39,6 +41,7 @@ chillscatter <- function(chill, yield) {
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
   
+  #message about complete cases
   assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
   ## build a scatter plot with a histogram of x and y with 'psych'

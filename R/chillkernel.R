@@ -10,6 +10,8 @@
 #' @importFrom MASS kde2d
 #' @importFrom stats complete.cases
 #' @importFrom graphics filled.contour
+#' @importFrom assertthat validate_that
+#' @importFrom assertthat see_if
 #' 
 #' @keywords chill yield kernel density
 #'
@@ -42,6 +44,8 @@ chillkernel <- function(chill, yield) {
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata <- chillyield[stats::complete.cases(chillyield), ]
+  #message about complete cases
+  assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
   #### kernel density estimation ####
   
