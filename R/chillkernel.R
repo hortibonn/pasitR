@@ -31,7 +31,14 @@ chillkernel <- function(chill, yield) {
   
   chillyielddata <- chillyield <- chillyieldkernel <- ylab <- xlab <- NULL # Setting the variables to NULL first, appeasing R CMD check
   
-  chillyield<-as.data.frame(cbind(chill, yield)) #create subset-able data
+  #add error stops with validate_that   
+  assertthat::validate_that(length(chill) == length(yield), msg = "\"chill\" and \"yield\" are not equal lengths.")
+  assertthat::validate_that(is.numeric(chill), msg = "\"chill\" is not numeric.")
+
+  assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
+
+  #create subset-able data
+  chillyield<-as.data.frame(cbind(chill, yield)) 
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata <- chillyield[stats::complete.cases(chillyield), ]

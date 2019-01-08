@@ -31,12 +31,26 @@ chillkernelslicerange <- function(chill, yield, min_chill, max_chill) {
          call. = FALSE)
   }
   
-  chillyielddata <- chillyield <- ylab <- xlab <- NULL # Setting the variables to NULL first, appeasing R CMD check
+  # Setting the variables to NULL first, appeasing R CMD check
+  chillyielddata <- chillyield <- ylab <- xlab <- NULL 
   
-  chillyield<-as.data.frame(cbind(chill, yield)) #create subset-able data
+  #add error stops with validate_that   
+  assertthat::validate_that(length(chill) == length(yield), msg = "\"chill\" and \"yield\" are not equal lengths.")
+  assertthat::validate_that(is.numeric(chill), msg = "\"chill\" is not numeric.")
+  
+  assertthat::validate_that(is.numeric(min_chill), msg = "\"min_chill\" is not numeric.")
+  
+  assertthat::validate_that(is.numeric(max_chill), msg = "\"max_chill\" is not numeric.")
+  
+  assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
+  
+  #create subset-able data
+  chillyield<-as.data.frame(cbind(chill, yield)) 
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
+  
+  #compare length of chillyield and chillyielddata and print 'you lost 'x' cases
   
   #### kernel density estimation ####
   
@@ -51,7 +65,8 @@ chillkernelslicerange <- function(chill, yield, min_chill, max_chill) {
  graphics::plot(chillyieldkernel$y, rowMeans(chillyieldkernel$z[,lbound:rbound]), type="l", col="seagreen", lwd = 2,
        xlab = paste("Yield for chill values between", as.character(min_chill), "and", 
                     as.character(max_chill)), ylab = "Relative probability")
-  
+  #for print we need x for max(chillyieldkernel$z[,lbound:rbound])
+ 
   print("Relative probability (y) of yield for the given chill portion interval (x).")
 }
 

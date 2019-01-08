@@ -1,6 +1,6 @@
 # pasitR
 Functions for use in the PASIT project group
-devtools::install_github(“CWWhitney/pasitR”)
+devtools::install_github("CWWhitney/pasitR")
 
 To change the default data assign the data to an r object and use
 usethis::use_data(data, overwrite=TRUE)

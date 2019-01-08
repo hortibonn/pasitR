@@ -30,9 +30,19 @@ chillkernelslice <- function(chill, yield, expectedchill) {
          call. = FALSE)
   }
   
-  chillyielddata <- chillyield <- ylab <- xlab <- NULL # Setting the variables to NULL first, appeasing R CMD check
+  # Setting the variables to NULL first, appeasing R CMD check
+  chillyielddata <- chillyield <- ylab <- xlab <- NULL 
   
-  chillyield<-as.data.frame(cbind(chill, yield)) #create subset-able data
+  #add error stops with validate_that   
+  assertthat::validate_that(length(chill) == length(yield), msg = "\"chill\" and \"yield\" are not equal lengths.")
+  assertthat::validate_that(is.numeric(chill), msg = "\"chill\" is not numeric.")
+  
+  assertthat::validate_that(is.numeric(expectedchill), msg = "\"expectedchill\" is not numeric.")
+
+  assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
+
+  #create subset-able data
+  chillyield<-as.data.frame(cbind(chill, yield)) 
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
@@ -49,4 +59,3 @@ chillkernelslice <- function(chill, yield, expectedchill) {
   
   print("Estimated yield given expected chill.")
 }
-
