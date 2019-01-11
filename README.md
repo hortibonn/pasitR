@@ -9,3 +9,5 @@ usethis::use_data(data, overwrite=TRUE)
 
 Create an Rmarkdown vignette using 
 usethis::use_vignette()
+
+We could add roxygen and devtools functions here. 
