@@ -7,9 +7,9 @@
 chillscatter(chill, yield)
 }
 \arguments{
-\item{chill}{is a list of observed annual chill portions corresponding to another list with annual yields.}
+\item{chill}{is a vector of observed annual chill portions corresponding to another list with annual yields.}
 
-\item{yield}{is a list of observed annual yields corresponding to another list with annual chill portions.}
+\item{yield}{is a vector of observed annual yields corresponding to another list with annual chill portions.}
 }
 \description{
 Chill (x) and yield (y) scatter plot with associated and estimated densities  (using a loess smooth) given by the red dot (mean) and red ellipses (1 and 2 sigma from mean). The red line going across the plot shows the linear fit. Histograms are shown with smooth lines (loess smooth linear fits) density curves. The numeric value in the upper right gives the Spearman correlation coefficient between chill portions and yield.

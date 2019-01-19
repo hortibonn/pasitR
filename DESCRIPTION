@@ -11,7 +11,8 @@ Imports:
     psych, 
     stats, 
     MASS,
-    graphics
+    graphics, 
+    assertthat
 License: GPL
 Encoding: UTF-8
 LazyData: true
