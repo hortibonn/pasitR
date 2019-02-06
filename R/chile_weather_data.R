@@ -5,8 +5,8 @@
 #' stations. This function works with data downloaded from the website of the Center for Climate and
 #' Resilience Research (CR)2 sponsored by the University of Chile. The function works for previously
 #' downloaded data in ".zip" format. Data can be downloaded from the following links:
-#' http://www.cr2.cl/download/cr2_tasmindaily_2018_ghcn-zip/?wpdmdl=15125 for minimum temperatures and
-#' http://www.cr2.cl/download/cr2_tasmaxdaily_2018_ghcn-zip/?wpdmdl=15126 for maximum temperatures.
+#' <http://www.cr2.cl/download/cr2_tasmindaily_2018_ghcn-zip/?wpdmdl=15125> for minimum temperatures and
+#' <http://www.cr2.cl/download/cr2_tasmaxdaily_2018_ghcn-zip/?wpdmdl=15126> for maximum temperatures.
 #' Function require both zip files in the same folder.
 #'
 #' @param data Character string input which define the kind of data wanted. There are three options
@@ -33,18 +33,18 @@
 #' temperatures. This input must include the name and extension of the file.
 #'
 #' @examples
-#' #Getting the ubication of zip files
-#' path_zip_tmin<-"C:\\Users\\Admin\\Dropbox\\Doctorado\\Doctorado\\Chile_weathers\\cr2_tasminDaily_2018_ghcn.zip"
-#' path_zip_tmax<-"C:\\Users\\Admin\\Dropbox\\Doctorado\\Doctorado\\Chile_weathers\\cr2_tasmaxDaily_2018_ghcn.zip"
+#' #Getting the pubication of zip files 
+#' path_zip_tmin <- "cr2_tasminDaily_2018_ghcn.zip" #these should be on your machine
+#' path_zip_tmax <- "cr2_tasmaxDaily_2018_ghcn.zip"
 #'
 #' #Call of the function
-#' chile_weather(data="my_weather",Initial_Date="2000-01-01",End_Date="2017-12-31",latitude=-32.8958,
-#'               longitude=-71.2092,Number_of_stations=25,path_zip_tmin=path_zip_tmin,path_zip_tmax=path_zip_tmax)
-
-
-chile_weather<-function(data,Initial_Date="1950-01-01",End_Date="2017-12-31",
-                        latitude=latitude,longitude=longitude,Number_of_stations=25,
-                        path_zip_tmin=path_zip_tmin,path_zip_tmax=path_zip_tmax){
+#' chile_weather(data="my_weather", Initial_Date="2000-01-01", End_Date="2017-12-31",latitude=-32.8958,
+#'               longitude=-71.2092, Number_of_stations=25, path_zip_tmin=path_zip_tmin,path_zip_tmax=path_zip_tmax)
+#' 
+#' @export chillscatter
+chile_weather <- function(data, latitude, longitude, path_zip_tmin, path_zip_tmax, 
+                Initial_Date = "1950-01-01", End_Date = "2017-12-31", 
+                Number_of_stations = 25){
   
   actual_WD<-getwd()
   setwd(paste(substr(path_zip_tmin,1,nchar(path_zip_tmin)-30)))
@@ -84,7 +84,7 @@ chile_weather<-function(data,Initial_Date="1950-01-01",End_Date="2017-12-31",
     Cod_stations_Max<-c(Cod_stations_Max,tempcod)
   }
   
-  Cod_stations_Max<-c("Fecha",Cod_stations_Max)
+  Cod_stations_Max <- c("Fecha",Cod_stations_Max)
   
   Tmax<-read.table(as.character(path_tmax[2,1]),sep = ",",quote = "",skip=15,blank.lines.skip = F,
                    col.names = Cod_stations_Max,na.strings = c("-9999","-9999.000"))
@@ -94,7 +94,7 @@ chile_weather<-function(data,Initial_Date="1950-01-01",End_Date="2017-12-31",
   setwd(actual_WD)
   
   mypoint<-c(longitude,latitude)
-  Stations[,"distancia"]<-round(sp::spDistsN1(as.matrix(Stations[,c("longitud","latitud")]),mypoint,longlat = T),2)
+  Stations[,"distancia"] <- round(sp::spDistsN1(as.matrix(Stations[,c("longitud","latitud")]),mypoint,longlat = T),2)
   Sorted_Stations<-Stations[order(Stations$distancia),]
   Sumarized_stations<-Sorted_Stations[c(1:Number_of_stations),]
   
@@ -110,20 +110,20 @@ chile_weather<-function(data,Initial_Date="1950-01-01",End_Date="2017-12-31",
           rep(2006,365),rep(2007,365),rep(2008,366),rep(2009,365),rep(2010,365),rep(2011,365),rep(2012,366),
           rep(2013,365),rep(2014,365),rep(2015,365),rep(2016,366),rep(2017,365))
   
-  Month<-c(rep(1,31),rep(2,28),rep(3,31),rep(4,30),rep(5,31),rep(6,30),rep(7,31),rep(8,31),rep(9,30),
+  Month <- c(rep(1,31),rep(2,28),rep(3,31),rep(4,30),rep(5,31),rep(6,30),rep(7,31),rep(8,31),rep(9,30),
            rep(10,31),rep(11,30),rep(12,31))
-  L_Month<-c(rep(1,31),rep(2,29),rep(3,31),rep(4,30),rep(5,31),rep(6,30),rep(7,31),rep(8,31),rep(9,30),
+  L_Month <- c(rep(1,31),rep(2,29),rep(3,31),rep(4,30),rep(5,31),rep(6,30),rep(7,31),rep(8,31),rep(9,30),
              rep(10,31),rep(11,30),rep(12,31))
-  Months<-c(Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,
+  Months <- c(Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,
             Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,
             Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,
             Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,Month,Month,L_Month,Month,
             Month,Month,L_Month,Month)
-  Day<-c(seq(1:31),seq(1:28),seq(1:31),seq(1:30),seq(1:31),seq(1:30),seq(1:31),seq(1:31),seq(1:30),seq(1:31),seq(1:30),
+  Day <- c(seq(1:31),seq(1:28),seq(1:31),seq(1:30),seq(1:31),seq(1:30),seq(1:31),seq(1:31),seq(1:30),seq(1:31),seq(1:30),
          seq(1:31))
-  L_Day<-c(seq(1:31),seq(1:29),seq(1:31),seq(1:30),seq(1:31),seq(1:30),seq(1:31),seq(1:31),seq(1:30),seq(1:31),seq(1:30),
+  L_Day <- c(seq(1:31),seq(1:29),seq(1:31),seq(1:30),seq(1:31),seq(1:30),seq(1:31),seq(1:31),seq(1:30),seq(1:31),seq(1:30),
            seq(1:31))
-  Days<-c(Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,
+  Days <- c(Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,
           Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,
           Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day,Day,Day,L_Day,Day)
   
