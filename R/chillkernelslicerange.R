@@ -7,7 +7,7 @@
 #' @param yield is a list of observed annual yields corresponding to another list with annual chill portions. 
 #' @param max_chill is a value of the highest expected  amount of chill for which the yield should be estimated (must be > expectedlowchill). 
 #' @param min_chill is a value of the lowest expected amount of chill for which the yield should be estimated (must be < expectedhighchill). 
-#' 
+#' adding some sily stuff
 #' @importFrom MASS kde2d
 #' @importFrom stats complete.cases
 #' @importFrom graphics filled.contour
