@@ -1,5 +1,5 @@
 # pasitR
-Functions for use in the PASIT project group
+tree dormancy and phenology functions for use in the PASIT project group
 devtools::install_github("CWWhitney/pasitR")
 
 An online version of the vignette html http://htmlpreview.github.io/?https://github.com/CWWhitney/pasitR/blob/master/vignettes/chill-yield-vignette.html
