@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3185417545",
+    "hash" : "0",
     "id" : "4CDD16AB",
-    "lastKnownWriteTime" : 1573549194,
-    "last_content_update" : 1573549194354,
+    "lastKnownWriteTime" : 1573549776,
+    "last_content_update" : 1573549776569,
     "path" : "~/Dropbox/Contributions/R/hortibonn/pasitR/.gitignore",
     "project_path" : ".gitignore",
     "properties" : {
-        "cursorPosition" : "0,9",
+        "cursorPosition" : "1,9",
         "scrollLine" : "0"
     },
     "read_only" : false,
