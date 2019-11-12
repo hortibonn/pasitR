@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1573548429623.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "46674C80",
+    "lastKnownWriteTime" : 1573548368,
+    "last_content_update" : 1573548368,
+    "path" : "~/Dropbox/Contributions/R/hortibonn/pasitR/vignettes/chill-yield-vignette.Rmd",
+    "project_path" : "vignettes/chill-yield-vignette.Rmd",
+    "properties" : {
+        "cursorPosition" : "73,10",
+        "scrollLine" : "73"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
