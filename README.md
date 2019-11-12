@@ -11,7 +11,9 @@ using
 
 | Quick Links                                                                                                                                  |
 | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| [**Functions**](https://github.com/CWWhitney/pasitR#Functions)                                                                               |
+| [**Estimated yield given the expected chill**](https://github.com/CWWhitney/pasitR#Estimated%20yield%20given%20the%20expected%20chill)       |
+| [**Chill portion intervals**](https://github.com/CWWhitney/pasitR#Chill%20portion%20intervals)                                               |
+| [**Probability of yield given chill**](https://github.com/CWWhitney/pasitR#Probability%20of%20yield%20given%20chill)                         |
 | [**Working with pasitR**](http://htmlpreview.github.io/?https://github.com/CWWhitney/pasitR/blob/master/vignettes/chill-yield-vignette.html) |
 | [**pasitR Wiki**](https://github.com/CWWhitney/pasitR/wiki)                                                                                  |
 
