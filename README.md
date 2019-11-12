@@ -19,26 +19,13 @@ using
 
 ## Functions
 
-Create random chill and yield data using `sample()`.
-
-``` r
-chill <- sample(x = 1:50, size = 20, replace = TRUE)
-yield <- sample(x = 1000:5000, size = 20, replace = TRUE)
-```
+Data comprising related observations of chill and yield are used for all
+for use with all functions.
 
 Using `chillscatter()` create a chill portions (x) and yield (y) scatter
 plot with associated and estimated densities with loess smooth linear
 fits density curves. Plot made with the scatter.hist() function in the
-plyr() package (Wickham 2011) in R (R Core Team
-    2017).
-
-``` r
-pasitR::chillscatter(chill, yield)
-```
-
-![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
-
-    #> [1] "Chill (x) and yield (y) scatter plot with associated and estimated densities."
+plyr() package (Wickham 2011) in R (R Core Team 2017).
 
 Use `chillkernel()` or another type of graphical representation of the
 same relationship. `chillkernel()` performs a two-dimensional kernel
@@ -48,14 +35,6 @@ matrix of the estimated density (z) of yield (y) and chill (x). As the
 density function restricts the shape of the kernel to a bivariate normal
 kernel, it looks slightly different compared to the scatter plot
 estimates above.
-
-``` r
-pasitR::chillkernel(chill, yield)
-```
-
-![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
-
-    #> [1] "Density surface plot of chill portions (x) and yield (y)."
 
 `chillkernel()` shows a density surface plot of chill portions (x) and
 yield (y). The legend shows the value for the estimated density (z). The
@@ -72,14 +51,6 @@ one, and therefore represents the relative probability of an observation
 chill, based on a slice of ‘z’ from the Kernel density calcualted with
 `chillkernel()`. The `expectedchill` parameter is set to 30.
 
-``` r
-pasitR::chillkernelslice(chill, yield, expectedchill = 30)
-```
-
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
-
-    #> [1] "Estimated yield given expected chill."
-
 `chillkernelslice()` plots the probabilities (shown along the y-axis)
 for the expected yield (shown along the x-axis). Since this is a cut
 through the density kernel `chillkernel()`, which integrates to 1, the
@@ -92,37 +63,19 @@ calculating the optimal interval width for chill portions using the
 `IQR()` function in the `stats()` package, after the Freedman-Diaconis
 rule (IQR = interquartile range). `Optimal interval width for our sample
 = 2 * interquartile range for our sample / (total number of observations
-for the interquartile range for our
-    sample)^(1/3)`
-
-``` r
-pasitR::chillviolin(chill, yield)
-```
-
-![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
-
-    #> [1] "Violin plots of chill portions (x) and yield (y) with six different intervals of chill portions."
+for the interquartile range for our sample)^(1/3)`
 
 `chillviolin()` shows violin plots of chill portions (x) and yield (y)
 with six different intervals of chill portions. Plot made with
 `ggplot2()` (Wickham 2016).
 
-## Probability of yield given chil
+## Probability of yield given chill
 
 `chillkernelslicerange()` The chill portion intervals, optimized
 interquartile ranges shown in `chillviolin()` can be used to select a
 range to slice from the density kernel `chillkernel()` as was doen for a
 single chill value in `chillkernelslice()`. Here we set the maximum
-chill to 20 and the minimum to
-    10.
-
-``` r
-pasitR::chillkernelslicerange(chill, yield, 10, 20)
-```
-
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
-
-    #> [1] "Relative probability (y) of yield for the given chill portion interval (x)."
+chill to 20 and the minimum to 10.
 
 `chillkernelslicerange()` plots the probabilities (shown along the
 y-axis) for the expected yield (shown along the x-axis). As with

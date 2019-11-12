@@ -61,7 +61,7 @@ pasitR::chillviolin(chill, yield)
 
 `chillviolin()` shows violin plots of chill portions (x) and yield (y) with six different intervals of chill portions. Plot made with `ggplot2()` (Wickham 2016).
 
-##Probability of yield given chil
+##Probability of yield given chill
 
 `chillkernelslicerange()` The chill portion intervals, optimized interquartile ranges shown in `chillviolin()` can be used to select a range to slice from the density kernel `chillkernel()` as was doen for a single chill value in `chillkernelslice()`. Here we set the maximum chill to 20 and the minimum to 10.
 

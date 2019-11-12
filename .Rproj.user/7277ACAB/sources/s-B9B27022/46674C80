@@ -7,13 +7,13 @@
     "folds" : "",
     "hash" : "0",
     "id" : "46674C80",
-    "lastKnownWriteTime" : 1573548368,
-    "last_content_update" : 1573548368,
+    "lastKnownWriteTime" : 1573550730,
+    "last_content_update" : 1573550731268,
     "path" : "~/Dropbox/Contributions/R/hortibonn/pasitR/vignettes/chill-yield-vignette.Rmd",
     "project_path" : "vignettes/chill-yield-vignette.Rmd",
     "properties" : {
-        "cursorPosition" : "73,10",
-        "scrollLine" : "73"
+        "cursorPosition" : "62,0",
+        "scrollLine" : "27"
     },
     "read_only" : false,
     "read_only_alternatives" : [
