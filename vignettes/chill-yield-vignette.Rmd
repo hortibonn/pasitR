@@ -1,7 +1,6 @@
 ---
 title: "Chill portions and yield"
-author: "Cory Whitney, Katja Schiffers, Eike Luedeling"
-date: "`r Sys.Date()`"
+author: Katja Schiffers^a^, Cory Whitney^a^, Eduardo Fernandez^a^ and Eike Luedeling^a^ <br /> <small>^a^INRES-Horticultural Sciences, University of Bonn, Auf dem Huegel 6, 53121 Bonn, Germany <small/>
 output:
       rmarkdown::html_vignette
 vignette: >
@@ -9,6 +8,10 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+<!-- Print pdf and word versions -->
+<!-- rmarkdown::render("chill-yield-vignette.Rmd", output_format = "pdf_document") -->
+<!-- rmarkdown::render("chill-yield-vignette.Rmd", output_format = "word_document") -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(

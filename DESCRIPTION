@@ -2,7 +2,8 @@ Package: pasitR
 Type: Package
 Title: Calculates common functions for the PASIT project
 Version: 0.1.0
-Author: Cory Whitney, Katja Schiffers, Eduardo Fernandez, Eike Luedeling
+Date: 2018-01-12
+Author: Katja Schiffers, Cory Whitney, Eduardo Fernandez, Eike Luedeling
 Maintainer: Cory Whitney <cory.whitney@uni-bonn.de>
 Description: Calculates common functions for the PASIT project.
 Depends: R (>= 2.10)
