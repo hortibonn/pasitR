@@ -2,10 +2,10 @@
 #'  
 #' The function produces a matrix of the estimated density (z) of yield (y) and chill (x). 
 #' As the density function restricts the shape of the kernel to a bivariate normal kernel, it looks slightly different compared to the scatter plot estimates in the pasitR::chillscatter() function.
-#' Density surface plot of chill portions (x) and yield (y). The legend shows the value for the estimated density (z).
+#' Density surface plot of Chill Portions (x) and yield (y). The legend shows the value for the estimated density (z).
 #' 
-#' @param chill is a list of observed annual chill portions corresponding to another list with annual yields. 
-#' @param yield is a list of observed annual yields corresponding to another list with annual chill portions. 
+#' @param chill is a list of observed seasonal Chill Portions corresponding to another list with annual yields. 
+#' @param yield is a list of observed annual yields corresponding to another list with seasonal Chill Portions. 
 #' 
 #' @importFrom MASS kde2d
 #' @importFrom stats complete.cases
@@ -40,10 +40,11 @@ chillkernel <- function(chill, yield) {
   assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
 
   #create subset-able data
-  chillyield<-as.data.frame(cbind(chill, yield)) 
+  chillyield <- as.data.frame(cbind(chill, yield)) 
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
   chillyielddata <- chillyield[stats::complete.cases(chillyield), ]
+  
   #message about complete cases
   assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
@@ -52,8 +53,8 @@ chillkernel <- function(chill, yield) {
   ## create a density surface with kde2d
   chillyieldkernel <- MASS::kde2d(chillyielddata$chill, chillyielddata$yield, n = 100)
   
-  graphics::filled.contour(chillyieldkernel, xlab = "Chill portion", ylab= "Yield")
+  graphics::filled.contour(chillyieldkernel, xlab = "Chill Portions", ylab = "Yield")
   
-  print("Density surface plot of chill portions (x) and yield (y).")
+  print("Density surface plot of Chill Portions (x) and yield (y).")
 }
 

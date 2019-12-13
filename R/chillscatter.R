@@ -1,15 +1,15 @@
 #' Create a scatter plot of chill and yield
 #'
-#' Chill (x) and yield (y) scatter plot with associated and estimated densities  (using a loess smooth) given by the red dot (mean) and red ellipses (1 and 2 sigma from mean). The red line going across the plot shows the linear fit. Histograms are shown with smooth lines (loess smooth linear fits) density curves. The numeric value in the upper right gives the Spearman correlation coefficient between chill portions and yield.
-#' @param chill is a vector of observed annual chill portions corresponding to another list with annual yields. 
-#' @param yield is a vector of observed annual yields corresponding to another list with annual chill portions. 
+#' Chill (x) and yield (y) scatter plot with associated and estimated densities  (using a loess smooth) given by the red dot (mean) and red ellipses (1 and 2 sigma from mean). The red line going across the plot shows the linear fit. Histograms are shown with smooth lines (loess smooth linear fits) density curves. The numeric value in the upper right gives the Spearman correlation coefficient between Chill Portions and yield.
+#' @param chill is a vector of observed seasonal Chill Portions corresponding to another list with annual yields. 
+#' @param yield is a vector of observed annual yields corresponding to another list with seasonal Chill Portions. 
 #' 
 #' @importFrom psych scatter.hist
 #' @importFrom stats complete.cases
 #' @importFrom assertthat validate_that
 #' @importFrom assertthat see_if
 #' 
-#' @keywords chill, chill portions, yield
+#' @keywords chill, Chill Portions, yield
 #'
 #' @examples
 #' chill <- sample(x = 1:50, size = 20, replace = TRUE)
@@ -36,17 +36,17 @@ chillscatter <- function(chill, yield) {
   # Setting the variables to NULL first, appeasing R CMD check
   chillyielddata <- chillyield <- ylab <- xlab <- NULL 
   
-  chillyield<-as.data.frame(cbind(chill, yield)) #create subset-able data
+  chillyield <- as.data.frame(cbind(chill, yield)) #create subset-able data
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
-  chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
+  chillyielddata <- chillyield[stats::complete.cases(chillyield), ]
   
   #message about complete cases
   assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
   ## build a scatter plot with a histogram of x and y with 'psych'
-  scatter<-psych::scatter.hist(x=chillyielddata$chill, y=chillyielddata$yield, density=TRUE, 
-                      xlab="Chill", ylab="Yield")
+  scatter <- psych::scatter.hist(x = chillyielddata$chill, y = chillyielddata$yield, density = TRUE, 
+                                 xlab = "Chill (in Chill Portions)", ylab = "Yield")
   
     print("Chill (x) and yield (y) scatter plot with associated and estimated densities.")
 }

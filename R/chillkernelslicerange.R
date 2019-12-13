@@ -3,10 +3,10 @@
 #' Plot representing probabilities (shown along the y-axis) for the expected yield (shown along the x-axis). 
 #' This is a broad slice through the density kernel from pasitR::chillkernel() function, which integrates to 1, the probability values are relative, not absolute measures.
 #' 
-#' @param chill is a list of observed annual chill portions corresponding to another list with annual yields. 
-#' @param yield is a list of observed annual yields corresponding to another list with annual chill portions. 
-#' @param max_chill is a value of the highest expected  amount of chill for which the yield should be estimated (must be > expectedlowchill). 
-#' @param min_chill is a value of the lowest expected amount of chill for which the yield should be estimated (must be < expectedhighchill). 
+#' @param chill is a list of observed seasonal Chill Portions corresponding to another list with annual yields. 
+#' @param yield is a list of observed annual yields corresponding to another list with seasonal Chill Portions. 
+#' @param max_chill is a value of the highest expected  amount of chill (in Chill Portions) for which the yield should be estimated (must be > expectedlowchill). 
+#' @param min_chill is a value of the lowest expected amount of chill (in Chill Portions) for which the yield should be estimated (must be < expectedhighchill). 
 #' 
 #' @importFrom MASS kde2d
 #' @importFrom stats complete.cases
@@ -47,10 +47,11 @@ chillkernelslicerange <- function(chill, yield, min_chill, max_chill) {
   assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
   
   #create subset-able data
-  chillyield<-as.data.frame(cbind(chill, yield)) 
+  chillyield <- as.data.frame(cbind(chill, yield)) 
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
-  chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
+  chillyielddata <- chillyield[stats::complete.cases(chillyield), ]
+  
   #message about complete cases
   assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
@@ -66,11 +67,11 @@ chillkernelslicerange <- function(chill, yield, min_chill, max_chill) {
   lbound <- which(chillyieldkernel$x == min(chillyieldkernel$x[which(chillyieldkernel$x > min_chill)]))
   rbound <- which(chillyieldkernel$x == max(chillyieldkernel$x[which(chillyieldkernel$x <= max_chill)]))
   
- graphics::plot(chillyieldkernel$y, rowMeans(chillyieldkernel$z[,lbound:rbound]), type="l", col="seagreen", lwd = 2,
+ graphics::plot(chillyieldkernel$y, rowMeans(chillyieldkernel$z[, lbound : rbound]), type = "l", col = "seagreen", lwd = 2,
        xlab = paste("Yield for chill values between", as.character(min_chill), "and", 
-                    as.character(max_chill)), ylab = "Relative probability")
-  #for print we need x for max(chillyieldkernel$z[,lbound:rbound])
+                    as.character(max_chill), "Chill Portions"), ylab = "Relative probability")
+  #for print we need x for max(chillyieldkernel$z[, lbound : rbound])
  
-  print("Relative probability (y) of yield for the given chill portion interval (x).")
+  print("Relative probability (y) of yield for the given Chill Portions interval (x).")
 }
 

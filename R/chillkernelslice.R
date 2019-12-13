@@ -3,8 +3,8 @@
 #' Plot representing probabilities (shown along the y-axis) for the expected yield (shown along the x-axis). 
 #' This is a cut through the density kernel from pasitR::chillkernel() function, which integrates to 1, the probability values are relative, not absolute measures.
 #' 
-#' @param chill is a list of observed annual chill portions corresponding to another list with annual yields. 
-#' @param yield is a list of observed annual yields corresponding to another list with annual chill portions. 
+#' @param chill is a list of observed seasonal Chill Portions corresponding to another list with annual yields. 
+#' @param yield is a list of observed annual yields corresponding to another list with seasonal Chill Portions. 
 #' @param expectedchill is a value of expected chill for which the yield should be estimated. 
 #' 
 #' @importFrom MASS kde2d
@@ -44,10 +44,11 @@ chillkernelslice <- function(chill, yield, expectedchill) {
   assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
 
   #create subset-able data
-  chillyield<-as.data.frame(cbind(chill, yield)) 
+  chillyield <- as.data.frame(cbind(chill, yield)) 
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
-  chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
+  chillyielddata <- chillyield[stats::complete.cases(chillyield), ]
+  
   #message about complete cases
   assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
@@ -57,9 +58,9 @@ chillkernelslice <- function(chill, yield, expectedchill) {
   chillyieldkernel <- MASS::kde2d(chillyielddata$chill, chillyielddata$yield, n = 100)
   
   ## cut through density kernel #####
-  graphics::plot(chillyieldkernel$x, chillyieldkernel$z[,expectedchill], type="l", 
+  graphics::plot(chillyieldkernel$x, chillyieldkernel$z[, expectedchill], type = "l", 
        ylab = "Relative probability", xlab = "Yield for chill values", 
-       col="seagreen", lwd = 2)
+       col = "seagreen", lwd = 2)
   
   print("Estimated yield given expected chill.")
 }
