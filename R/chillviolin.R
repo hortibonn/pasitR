@@ -1,10 +1,10 @@
 #' Create a scatter plot of chill and yield
 #'
-#' Violin plots of chill portions (x) and yield (y) with six different intervals of chill portions.
-#' Determine different possible chill portion intervals by calculating the optimal interval width for chill portions using the IQR() function in the stats() package of R, after the Freedman-Diaconis rule (IQR = interquartile range).
+#' Violin plots of Chill Portions (x) and yield (y) with six different intervals of Chill Portions.
+#' Determine different possible Chill Portions intervals by calculating the optimal interval width for Chill Portions using the IQR() function in the stats() package of R, after the Freedman-Diaconis rule (IQR = interquartile range).
 #'
-#' @param chill is a list of observed annual chill portions corresponding to another list with annual yields. 
-#' @param yield is a list of observed annual yields corresponding to another list with annual chill portions. 
+#' @param chill is a list of observed seasonal Chill Portions corresponding to another list with annual yields. 
+#' @param yield is a list of observed annual yields corresponding to another list with seasonal Chill Portions. 
 #' 
 #' @importFrom ggplot2 ggplot
 #' @importFrom ggplot2 aes
@@ -47,10 +47,11 @@ chillviolin <- function(chill, yield) {
   assertthat::validate_that(is.numeric(yield), msg = "\"yield\" is not numeric.")
   
   #create subset-able data
-  chillyield<-as.data.frame(cbind(chill, yield)) 
+  chillyield <- as.data.frame(cbind(chill, yield)) 
   
   ## Use 'complete.cases' from stats to get to the collection of obs without NA
-  chillyielddata<-chillyield[stats::complete.cases(chillyield), ]
+  chillyielddata <- chillyield[stats::complete.cases(chillyield), ]
+  
   #message about complete cases
   assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
@@ -59,18 +60,18 @@ chillviolin <- function(chill, yield) {
   width <- 2 * stats::IQR(chillyielddata$chill) / length(chillyielddata$chill)^(1/3)
   
   ## violin plot with IQR cut_width
-  chillyieldviolin <- ggplot2::ggplot(chillyielddata, ggplot2::aes(ggplot2::cut_width(chill, width=width), yield, 
-                          color=ggplot2::cut_width(chill, width=width))) +
+  chillyieldviolin <- ggplot2::ggplot(chillyielddata, ggplot2::aes(ggplot2::cut_width(chill, width = width), yield, 
+                          color = ggplot2::cut_width(chill, width = width))) +
     ggplot2::geom_violin() +
-    ggplot2::theme_classic()+
-    ggplot2::geom_boxplot(width=.1) +
-    ggplot2::xlab("Chill portions") +
+    ggplot2::theme_classic() +
+    ggplot2::geom_boxplot(width = .1) +
+    ggplot2::xlab("Chill Portions") +
     ggplot2::ylab("Yield") +  
-    ggplot2::scale_color_discrete(name="Chill Portion Intervals")
+    ggplot2::scale_color_discrete(name = "Chill Portions Intervals")
   
   print(chillyieldviolin)
   
-  print("Violin plots of chill portions (x) and yield (y) with six different intervals of chill portions.")
+  print("Violin plots of Chill Portions (x) and yield (y) with six different intervals of Chill Portions.")
 
   }
 
