@@ -18,6 +18,13 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+# Add Unit Tests with https://testthat.r-lib.org/
+# Install the released version from CRAN
+# install.packages("testthat")
+
+#The easiest way to get started is with usethis. Assuming you’re in a package directory, just run usethis::use_test("name") to create a test file, and set up all the other infrastructure you need. If you’re using RStudio, press Cmd/Ctrl + Shift + T (or run devtools::test() if not) to run all the tests in a package..
+
 ```
 
 Create random chill and yield data using `sample()`. 
