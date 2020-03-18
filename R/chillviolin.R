@@ -65,7 +65,7 @@ chillviolin <- function(chill, yield) {
     ggplot2::geom_violin() +
     ggplot2::theme_classic() +
     ggplot2::geom_boxplot(width = .1) +
-    ggplot2::xlab("Chill Portions") +
+    ggplot2::xlab("Intervals for chill accumulation (in CP)") +
     ggplot2::ylab("Yield") +  
     ggplot2::scale_color_discrete(name = "Chill Portions Intervals")
   

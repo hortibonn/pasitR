@@ -1,6 +1,6 @@
-#' Perform a two-dimensional kernel density estimation for yield and chill.
-#'  
-#' The function produces a matrix of the estimated density (z) of yield (y) and chill (x). 
+#' Perform a two-dimensional kernel density estimation for yield and chill
+#'   
+#' The function produces a matrix of the estimated density (z) of yield (y) and chill (x).
 #' As the density function restricts the shape of the kernel to a bivariate normal kernel, it looks slightly different compared to the scatter plot estimates in the pasitR::chillscatter() function.
 #' Density surface plot of Chill Portions (x) and yield (y). The legend shows the value for the estimated density (z).
 #' 
@@ -21,6 +21,7 @@
 #' chillkernel(chill, yield)
 #' 
 #' @export chillkernel
+#' 
 chillkernel <- function(chill, yield) {
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
     stop("Package \"ggplot2\" needed for this function to work. Please install it.",
@@ -53,7 +54,7 @@ chillkernel <- function(chill, yield) {
   ## create a density surface with kde2d
   chillyieldkernel <- MASS::kde2d(chillyielddata$chill, chillyielddata$yield, n = 100)
   
-  graphics::filled.contour(chillyieldkernel, xlab = "Chill Portions", ylab = "Yield")
+  graphics::filled.contour(chillyieldkernel, xlab = "Chill accumulation (in CP)", ylab = "Yield")
   
   print("Density surface plot of Chill Portions (x) and yield (y).")
 }

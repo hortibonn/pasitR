@@ -46,7 +46,7 @@ chillscatter <- function(chill, yield) {
   
   ## build a scatter plot with a histogram of x and y with 'psych'
   scatter <- psych::scatter.hist(x = chillyielddata$chill, y = chillyielddata$yield, density = TRUE, 
-                                 xlab = "Chill (in Chill Portions)", ylab = "Yield")
+                                 xlab = "Chill accumulation (in CP)", ylab = "Yield")
   
     print("Chill (x) and yield (y) scatter plot with associated and estimated densities.")
 }
