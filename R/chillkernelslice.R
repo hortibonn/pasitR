@@ -58,9 +58,11 @@ chillkernelslice <- function(chill, yield, expectedchill) {
   chillyieldkernel <- MASS::kde2d(chillyielddata$chill, chillyielddata$yield, n = 100)
   
   ## cut through density kernel #####
-  graphics::plot(chillyieldkernel$x, chillyieldkernel$z[, expectedchill], type = "l", 
-       ylab = "Relative probability", xlab = "Yield for chill values", 
-       col = "seagreen", lwd = 2)
+  
+  graphics::plot(chillyieldkernel$y, chillyieldkernel$z[, expectedchill], type = "l", 
+                 ylab = "Relative probability",
+                 xlab = paste("Yield for", expectedchill, "CP (expected)"), 
+                 col = "seagreen", lwd = 2)
   
   print("Estimated yield given expected chill.")
 }

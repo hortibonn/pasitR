@@ -69,7 +69,7 @@ chillkernelslicerange <- function(chill, yield, min_chill, max_chill) {
   
  graphics::plot(chillyieldkernel$y, rowMeans(chillyieldkernel$z[, lbound : rbound]), type = "l", col = "seagreen", lwd = 2,
        xlab = paste("Yield for chill values between", as.character(min_chill), "and", 
-                    as.character(max_chill), "Chill Portions"), ylab = "Relative probability")
+                    as.character(max_chill), "CP"), ylab = "Relative probability")
   #for print we need x for max(chillyieldkernel$z[, lbound : rbound])
  
   print("Relative probability (y) of yield for the given Chill Portions interval (x).")

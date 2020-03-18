@@ -2,11 +2,7 @@
 % Please edit documentation in R/chillkernel.R
 \name{chillkernel}
 \alias{chillkernel}
-\title{Perform a two-dimensional kernel density estimation for yield and chill.
- 
-The function produces a matrix of the estimated density (z) of yield (y) and chill (x). 
-As the density function restricts the shape of the kernel to a bivariate normal kernel, it looks slightly different compared to the scatter plot estimates in the pasitR::chillscatter() function.
-Density surface plot of chill portions (x) and yield (y). The legend shows the value for the estimated density (z).}
+\title{Perform a two-dimensional kernel density estimation for yield and chill}
 \usage{
 chillkernel(chill, yield)
 }
@@ -16,8 +12,6 @@ chillkernel(chill, yield)
 \item{yield}{is a list of observed annual yields corresponding to another list with annual chill portions.}
 }
 \description{
-Perform a two-dimensional kernel density estimation for yield and chill.
- 
 The function produces a matrix of the estimated density (z) of yield (y) and chill (x). 
 As the density function restricts the shape of the kernel to a bivariate normal kernel, it looks slightly different compared to the scatter plot estimates in the pasitR::chillscatter() function.
 Density surface plot of chill portions (x) and yield (y). The legend shows the value for the estimated density (z).
