@@ -56,7 +56,7 @@ chillviolin <- function(chill, yield) {
   assertthat::see_if(length(chillyield) == length(chillyielddata), msg = "Rows with NA were removed.")
   
   ## a method to calculate the optimal bin width for the violin plots 
-  ## after the Freedman-Diaconis rule (IQR = interquartile range, buildt-in):
+  ## after the Freedman-Diaconis rule (IQR = interquartile range, built-in):
   width <- 2 * stats::IQR(chillyielddata$chill) / length(chillyielddata$chill)^(1/3)
   
   ## violin plot with IQR cut_width
