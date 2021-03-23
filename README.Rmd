@@ -29,7 +29,7 @@ library(pasitR)
 
 ## Functions
 
-Data comprising related observations of chill and yield are used for all for use with all functions. 
+Data comprising related observations of chill and yield are used in all functions. 
 
 Using `chillscatter()` create a chill portions (x) and yield (y) scatter plot with associated and estimated densities with loess smooth linear fits density curves. Plot made with the scatter.hist() function in the plyr() package (Wickham 2011) in R (R Core Team 2017).  
 

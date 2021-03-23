@@ -4,13 +4,12 @@
 # PasitR
 
 A collection of functions for use in the PASIT project group. Install
-using
-`devtools::install_github("CWWhitney/pasitR")`
+using `devtools::install_github("CWWhitney/pasitR")`
 
 <!-- Links: start -->
 
 | Quick Links                                                                                                                                  |
-| :------------------------------------------------------------------------------------------------------------------------------------------- |
+|:---------------------------------------------------------------------------------------------------------------------------------------------|
 | [**Estimated yield given the expected chill**](https://github.com/CWWhitney/pasitR#Estimated%20yield%20given%20the%20expected%20chill)       |
 | [**Chill portion intervals**](https://github.com/CWWhitney/pasitR#Chill%20portion%20intervals)                                               |
 | [**Probability of yield given chill**](https://github.com/CWWhitney/pasitR#Probability%20of%20yield%20given%20chill)                         |
@@ -21,8 +20,8 @@ using
 
 ## Functions
 
-Data comprising related observations of chill and yield are used for all
-for use with all functions.
+Data comprising related observations of chill and yield are used in all
+functions.
 
 Using `chillscatter()` create a chill portions (x) and yield (y) scatter
 plot with associated and estimated densities with loess smooth linear
@@ -63,9 +62,8 @@ probability values are relative, not absolute measures.
 `chillviolin()` determines different possible chill portion intervals by
 calculating the optimal interval width for chill portions using the
 `IQR()` function in the `stats()` package, after the Freedman-Diaconis
-rule (IQR = interquartile range). `Optimal interval width for our sample
-= 2 * interquartile range for our sample / (total number of observations
-for the interquartile range for our sample)^(1/3)`
+rule (IQR = interquartile range).
+`Optimal interval width for our sample = 2 * interquartile range for our sample / (total number of observations for the interquartile range for our sample)^(1/3)`
 
 `chillviolin()` shows violin plots of chill portions (x) and yield (y)
 with six different intervals of chill portions. Plot made with
